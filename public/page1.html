@@ -1,23 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Custom Cursor</title>
     <style>
         * {
             margin: 0;
             padding: 0;
         }
 
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        .page-block {
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .page-block img {
             width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .invert-cursor {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: white;
+            mix-blend-mode: difference;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            transition: transform 0.05s ease;
+        }
+
+        .invert-cursor.active {
+            transform: scale(0.7);
         }
     </style>
 </head>
+
 <body>
     <div class="page-block">
         <img src="test_dlya_vypuska2.jpg" alt="">
     </div>
+
+    <div class="invert-cursor" id="cursor"></div>
+
+    <script>
+        const cursor = document.getElementById("cursor");
+
+        window.addEventListener("mousemove", e => {
+            cursor.style.left = (e.clientX - 14) + "px";
+            cursor.style.top = (e.clientY - 14) + "px";
+        });
+
+        window.addEventListener("mousedown", () => {
+            cursor.classList.add("active");
+        });
+
+        window.addEventListener("mouseup", () => {
+            cursor.classList.remove("active");
+        });
+
+        // Скрываем курсор при выходе из окна
+        window.addEventListener("mouseleave", () => {
+            cursor.style.opacity = "0";
+        });
+
+        window.addEventListener("mouseenter", () => {
+            cursor.style.opacity = "1";
+        });
+    </script>
 </body>
+
 </html>

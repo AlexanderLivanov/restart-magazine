@@ -1,3 +1,7 @@
+* {
+  cursor: default;
+}
+
 body {
   background: #222;
   color: #fff;

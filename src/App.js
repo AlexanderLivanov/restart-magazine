@@ -39,9 +39,18 @@ class DemoBook extends React.Component {
   onChangeOrientation = (e) => this.setState({ orientation: e.data });
   onChangeState = (e) => this.setState({ state: e.data });
 
+  handleKeyDown = (e) => {
+    if (!this.flipBook) return;
+    if (e.key === "ArrowRight") {
+      this.nextButtonClick();
+    } else if (e.key === "ArrowLeft") {
+      this.prevButtonClick();
+    }
+  };
+
   async componentDidMount() {
     try {
-      const urls = ["/page3.html", "/page1.html", "/page2.html", "/page2.html", "/page5.html", "/page6.html", "/page7.html"];
+      const urls = ["/page0.html", "/page1.html", "/page2.html", "/page5.html", "/page6.html", "/page7.html"];
       const pages = [];
 
       for (let url of urls) {
@@ -51,9 +60,44 @@ class DemoBook extends React.Component {
       }
 
       this.setState({ pages });
+      window.addEventListener("keydown", this.handleKeyDown);
     } catch (error) {
       console.error("Ошибка загрузки страницы:", error);
     }
+    
+    const cursor = document.createElement("div");
+    cursor.id = "custom-cursor";
+    cursor.style.cssText = `
+    display: none;
+      position: fixed;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: white;
+      mix-blend-mode: difference;
+      pointer-events: none;
+      z-index: 99999;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    `;
+    document.body.appendChild(cursor);
+
+    window.addEventListener("mousemove", (e) => {
+      cursor.style.left = (e.clientX - 14) + "px";
+      cursor.style.top = (e.clientY - 14) + "px";
+    });
+
+    window.addEventListener("mousedown", () => {
+      cursor.style.transform = "scale(0.7)";
+    });
+
+    window.addEventListener("mouseup", () => {
+      cursor.style.transform = "scale(1)";
+    });
+  }
+
+  componentWillUnmount() {
+    // Убираем обработчик при размонтировании
+    window.removeEventListener("keydown", this.handleKeyDown);
   }
 
   render() {
