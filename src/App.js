@@ -50,7 +50,7 @@ class DemoBook extends React.Component {
 
   async componentDidMount() {
     try {
-      const urls = ["/page0.html", "/page1.html", "/page2.html", "/page5.html", "/page6.html", "/page7.html"];
+      const urls = ["/page0.html", "/page1.php", "/page2.html", "/page5.html", "/page6.html", "/page7.html"];
       const pages = [];
 
       for (let url of urls) {
