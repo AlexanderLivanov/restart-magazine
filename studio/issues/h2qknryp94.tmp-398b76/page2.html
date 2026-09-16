@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ИГРОЛОМ СЕНТЯБРЬ&#039;26 — полоса 3</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,700;1,7..72,400&amp;family=Manrope:wght@400;600;800&amp;family=Onest:wght@400;500;600;700&amp;family=Oswald:wght@400;600&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&amp;family=Rubik+Mono+One&amp;family=Unbounded:wght@400;700;900&amp;family=Yeseva+One&amp;display=swap" data-mag-font>
+<style data-mag>
+/* newmagazine/studio/assets/page.css
+   Общий CSS полосы: редактор, миниатюры, экспортированные pageN.html.
+   Все размеры — в миллиметрах полосы: 1 мм = 100cqw / 210, поэтому полоса масштабируется целиком
+   от ширины контейнера (595px во вьюере, любая ширина в редакторе). */
+.pg{position:relative;width:100%;aspect-ratio:210/297;container-type:size;overflow:hidden;isolation:isolate;
+  background:var(--pg-bg,#fff);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.pg *,.pg *::before,.pg *::after{box-sizing:border-box;margin:0;padding:0}
+.pg .blk{--mm:calc(100cqw / 210);position:absolute;
+  left:calc(var(--x) * var(--mm));top:calc(var(--y) * var(--mm));
+  width:calc(var(--w) * var(--mm));height:calc(var(--h) * var(--mm));
+  transform:rotate(calc(var(--r, 0) * 1deg));z-index:var(--z, 1);
+  opacity:var(--op, 1);mix-blend-mode:var(--bl, normal)}
+.pg .ct{position:absolute;inset:0;overflow:hidden;display:flex;flex-direction:column;justify-content:var(--va, flex-start);
+  padding:calc(var(--pad, 0) * var(--mm));border-radius:calc(var(--rad, 0) * var(--mm));clip-path:var(--clip, none);
+  background:var(--bg, transparent);box-shadow:inset 0 0 0 calc(var(--bw, 0) * .3528 * var(--mm)) var(--bc, transparent);
+  font-family:var(--ff, sans-serif);font-size:calc(var(--fs, 10) * .3528 * var(--mm));font-weight:var(--fw, 400);
+  font-style:var(--fst, normal);text-transform:var(--tt, none);text-align:var(--ta, left);
+  line-height:var(--lh, 1.3);letter-spacing:calc(var(--ls, 0) * 1em);color:var(--c, #141414)}
+.pg .tx{white-space:pre-wrap;overflow-wrap:break-word;hyphens:auto;min-height:1em;outline:none}
+
+/* текст статьи */
+.pg .t-body .ct{display:block}
+.pg .t-body .tx{height:100%;white-space:normal;column-count:var(--cols, 1);column-gap:calc(var(--gap, 6) * var(--mm));column-fill:balance;overflow:hidden}
+.pg .t-body .tx p{white-space:pre-wrap}
+.pg .t-body .tx:not(.ind) p+p{margin-top:.55em}
+.pg .t-body .tx.ind p+p{text-indent:1.4em}
+.pg .t-body .tx.dc>p:first-child::first-letter{float:left;font-size:3.35em;line-height:.8;padding:.07em .08em 0 0;color:var(--dc);font-weight:700;font-style:normal}
+
+/* цитата и анонс обложки */
+.pg .t-quote .tx::before{content:"«";display:block;font-size:2.4em;line-height:.8;height:.5em;margin-bottom:.1em;color:var(--dc)}
+.pg .t-quote .tx.nomark::before{display:none}
+.pg .t-coverline .tx::first-line{color:var(--dc);font-size:1.45em;font-weight:800}
+
+/* картинка */
+.pg .t-image img{display:block;width:100%;height:100%;object-fit:var(--fit, cover);
+  object-position:calc(var(--fx, 50) * 1%) calc(var(--fy, 50) * 1%);
+  transform:scale(var(--zm, 1));transform-origin:calc(var(--fx, 50) * 1%) calc(var(--fy, 50) * 1%);
+  filter:grayscale(var(--gr, 0)) contrast(var(--con, 1));user-select:none;-webkit-user-drag:none}
+.pg .t-image .tint{position:absolute;inset:0;pointer-events:none;background:var(--tint);opacity:var(--tA);mix-blend-mode:var(--tm)}
+.pg .ph{position:absolute;inset:0;display:grid;place-items:center;color:#8a8a8a;
+  font:500 calc(8 * .3528 * var(--mm)) / 1.3 "IBM Plex Mono", monospace;
+  background:repeating-linear-gradient(45deg,#ecebe6 0 calc(2 * var(--mm)),#f5f4f0 calc(2 * var(--mm)) calc(4 * var(--mm)))}
+
+/* штрихкод */
+.pg .t-barcode .ct{background:var(--bg, #fff);color:var(--c, #111)}
+.pg .t-barcode svg{display:block;flex:1;min-height:0;width:100%;fill:currentColor}
+.pg .t-barcode .bcn{font:500 calc(min(var(--h) * .16, var(--w) * .085) * var(--mm)) / 1.25 "IBM Plex Mono", monospace;text-align:center;letter-spacing:.12em;white-space:nowrap}
+
+/* колонтитул */
+.pg .folio{--mm:calc(100cqw / 210);position:absolute;bottom:calc(8 * var(--mm));z-index:99990;display:flex;gap:1.2em;white-space:nowrap;
+  font:500 calc(6.2 * .3528 * var(--mm)) / 1 "IBM Plex Mono", monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--folio, #1a1a1a);pointer-events:none}
+.pg .folio.L{left:calc(15 * var(--mm))}
+.pg .folio.R{right:calc(15 * var(--mm))}
+
+/* ---------- бумага ----------
+   data-finish: matte (зерно) | gloss (лак + блик, позиция блика — --gx, её двигает вьюер)
+   data-density: hard — картонный лист: тень у корешка и грань по внешнему краю
+   data-side: L | R — где у полосы корешок */
+.pg::before,.pg::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:99991}
+.pg::before{background-image:var(--hinge, none), var(--grain, none);background-size:100% 100%, calc(40 * 100cqw / 210) calc(40 * 100cqw / 210);mix-blend-mode:multiply}
+.pg[data-finish="matte"]{--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .38 0 0 0 0 .33 .22 0 0 0 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+.pg[data-density="hard"][data-side="R"]{--hinge:linear-gradient(90deg, rgba(0,0,0,.32) 0, rgba(0,0,0,.1) 1.4%, rgba(255,255,255,.14) 2.2%, rgba(0,0,0,.06) 3.2%, transparent 6%, transparent 99.2%, rgba(0,0,0,.22) 100%)}
+.pg[data-density="hard"][data-side="L"]{--hinge:linear-gradient(270deg, rgba(0,0,0,.32) 0, rgba(0,0,0,.1) 1.4%, rgba(255,255,255,.14) 2.2%, rgba(0,0,0,.06) 3.2%, transparent 6%, transparent 99.2%, rgba(0,0,0,.22) 100%)}
+.pg[data-finish="gloss"]::after{
+  background:
+    linear-gradient(var(--ga, 112deg),
+      transparent calc(var(--gx, 28%) - 26%),
+      rgba(255,255,255,.16) calc(var(--gx, 28%) - 8%),
+      rgba(255,255,255,.5) var(--gx, 28%),
+      rgba(255,255,255,.14) calc(var(--gx, 28%) + 7%),
+      transparent calc(var(--gx, 28%) + 26%)),
+    linear-gradient(180deg, rgba(255,255,255,.12), transparent 30%, transparent 75%, rgba(0,0,0,.07));
+  mix-blend-mode:screen;opacity:var(--gloss, .6)}
+
+</style>
+<style data-doc>
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #fff; }
+.pg { width: min(100%, calc(100vh * 210 / 297)); margin: 0 auto; }
+</style>
+</head>
+<body>
+<div class="pg kind-cover" data-density="hard" data-finish="gloss" data-side="R" style="--pg-bg:#ffffff;--folio:#1a1a1a"><div class="blk t-rubric" style="--x:15;--y:20;--w:48;--h:7;--r:0;--z:3;--op:1;--bl:normal;--rad:0;--pad:1.6;--bg:#c32178;--ff:&#039;IBM Plex Mono&#039;, monospace;--fs:7;--fw:500;--fst:normal;--tt:uppercase;--ta:center;--lh:1;--ls:0.14;--c:#ffffff;--va:center;"><div class="ct"><div class="tx">Инди · репортаж</div></div></div><div class="blk t-heading" style="--x:15;--y:32;--w:180;--h:50;--r:0;--z:4;--op:1;--bl:normal;--rad:0;--pad:0;--ff:&#039;Playfair Display&#039;, serif;--fs:46;--fw:900;--fst:normal;--tt:none;--ta:left;--lh:1;--ls:-0.01;--c:#141414;--va:flex-start;"><div class="ct"><div class="tx">Пиксели на краю карты</div></div></div><div class="blk t-lead" style="--x:15;--y:86;--w:172;--h:26;--r:0;--z:5;--op:1;--bl:normal;--rad:0;--pad:0;--ff:&#039;Literata&#039;, serif;--fs:12;--fw:400;--fst:italic;--tt:none;--ta:left;--lh:1.35;--ls:0;--c:#222222;--va:flex-start;"><div class="ct"><div class="tx">Как студия из двух человек в Костроме выпустила игру, о которой спорят сильнее, чем о релизах больших издателей.</div></div></div><div class="blk t-author" style="--x:15;--y:116;--w:180;--h:6;--r:0;--z:6;--op:1;--bl:normal;--rad:0;--pad:0;--ff:&#039;Onest&#039;, sans-serif;--fs:7.5;--fw:600;--fst:normal;--tt:uppercase;--ta:left;--lh:1.3;--ls:0.08;--c:#6b6b6b;--va:flex-start;"><div class="ct"><div class="tx">Текст — Мария Ветрова · Иллюстрации — студия «Полынь»</div></div></div><div class="blk t-rule" style="--x:15;--y:125;--w:180;--h:0.4;--r:0;--z:7;--op:1;--bl:normal;--rad:0;--pad:0;--bg:#141414;"><div class="ct"></div></div><div class="blk t-body" style="--x:15;--y:131;--w:180;--h:143;--r:0;--z:8;--op:1;--bl:normal;--rad:0;--pad:0;--ff:&#039;Literata&#039;, serif;--fs:9;--fw:400;--fst:normal;--tt:none;--ta:justify;--lh:1.45;--ls:0;--c:#141414;--va:flex-start;--dc:#c32178;--cols:2;--gap:6;"><div class="ct"><div class="tx dc ind"><p>Кострома, девять вечера. В бывшей мастерской по ремонту часов горят два монитора и настольная лампа с зелёным абажуром. Здесь работает «Полынь» — студия из двух человек, чья первая игра за месяц собрала больше отзывов, чем иные проекты больших издателей.«Мы начинали без плана и без денег, — рассказывает художница Вера Лапина. — Был ноутбук и тетрадь, куда мы рисовали карту. Карта получилась больше, чем игра, и в какой-то момент мы решили: пусть игра станет картой».«Северная тропа» — неторопливое путешествие по краю мира, собранное из тридцати восьми цветов. Палитру ограничили сознательно: каждый новый оттенок нужно было заслужить. Так появился закатный розовый, которого больше нет нигде в игре, кроме последней сцены.Код пишет Илья Сомов, днём — инженер на заводе. Движок он собрал сам, потому что готовые казались ему «слишком шумными». Вечерами он переписывает систему погоды, а по выходным отвечает игрокам в сообществе — каждому лично.Главная проблема маленькой студии — не деньги и не время, а тишина. Никто не видит игру, пока она не вышла, и никто не скажет, что уровень скучный. «Полынь» решила это просто: каждую пятницу выкладывала сборку для двадцати подписчиков и читала каждый отзыв вслух.Сейчас студия работает над продолжением. Карта снова нарисована в тетради, только тетрадей теперь три. И лампа всё та же — зелёная.</p></div></div></div></div>
+</body>
+</html>

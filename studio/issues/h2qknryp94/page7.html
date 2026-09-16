@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ИГРОЛОМ СЕНТЯБРЬ&#039;26 — полоса 8</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,700;1,7..72,400&amp;family=Manrope:wght@400;600;800&amp;family=Onest:wght@400;500;600;700&amp;family=Oswald:wght@400;600&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&amp;family=Rubik+Mono+One&amp;family=Unbounded:wght@400;700;900&amp;family=Yeseva+One&amp;display=swap" data-mag-font>
+<style data-mag>
+/* newmagazine/studio/assets/page.css
+   Общий CSS полосы: редактор, миниатюры, экспортированные pageN.html.
+   Размеры — в миллиметрах полосы: 1 мм = 100cqw / 210 (на столе редактора разворот — 100cqw / 420).
+   Живые переменные приходят снаружи (вьюер ставит их на host, внутрь Shadow DOM они наследуются):
+     --mx --my  0..1  указатель на полосе          --px --py  -1..1  указатель от центра
+     --gx       блик глянца (%)                     --rvon     0/1    фонарик включён */
+.pg{position:relative;width:100%;aspect-ratio:210/297;container-type:size;overflow:hidden;isolation:isolate;
+  background:var(--pg-bg,#fff);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.pg *,.pg *::before,.pg *::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ---------- блок ---------- */
+.pg .blk{--mm:calc(100cqw / 210);position:absolute;
+  left:calc(var(--x) * var(--mm));top:calc(var(--y) * var(--mm));
+  width:calc(var(--w) * var(--mm));height:calc(var(--h) * var(--mm));
+  transform:var(--tpar,) var(--t3d,) rotate(calc(var(--r, 0) * 1deg));
+  z-index:var(--z, 1);opacity:var(--op, 1);mix-blend-mode:var(--bl, normal);
+  filter:var(--liftf,) var(--newsf,)}
+.pg .ct{position:absolute;inset:0;overflow:hidden;display:flex;flex-direction:column;justify-content:var(--va, flex-start);
+  padding:calc(var(--pad, 0) * var(--mm));
+  border-radius:calc(var(--r1, var(--rad, 0)) * var(--mm)) calc(var(--r2, var(--rad, 0)) * var(--mm)) calc(var(--r3, var(--rad, 0)) * var(--mm)) calc(var(--r4, var(--rad, 0)) * var(--mm));
+  clip-path:var(--clip, none);
+  background:var(--bg, transparent);box-shadow:inset 0 0 0 calc(var(--bw, 0) * .3528 * var(--mm)) var(--bc, transparent);
+  font-family:var(--ff, sans-serif);font-size:calc(var(--fs, 10) * .3528 * var(--mm));font-weight:var(--fw, 400);
+  font-style:var(--fst, normal);text-transform:var(--tt, none);text-align:var(--ta, left);
+  line-height:var(--lh, 1.3);letter-spacing:calc(var(--ls, 0) * 1em);color:var(--c, #141414)}
+.pg .tx{white-space:pre-wrap;overflow-wrap:break-word;hyphens:auto;min-height:1em;outline:none;
+  text-shadow:var(--tsh, none);-webkit-text-stroke:var(--tst, 0 transparent);paint-order:stroke fill}
+
+/* 3D-наклон и подъём (параллакс + тень, которая уходит от указателя) */
+.pg .blk[data-3d]{--t3d:perspective(calc(var(--persp) * var(--mm))) rotateX(calc(var(--rx) * 1deg)) rotateY(calc(var(--ry) * 1deg))}
+.pg .blk[data-lift]{
+  --tpar:translate(calc(var(--px, 0) * var(--lift) * .06 * var(--mm)), calc(var(--py, 0) * var(--lift) * .06 * var(--mm)));
+  --liftf:drop-shadow(calc((var(--lift) * .15 - var(--px, 0) * var(--lift) * .22) * var(--mm)) calc((var(--lift) * .3 - var(--py, 0) * var(--lift) * .22) * var(--mm)) calc(var(--lift) * .45 * var(--mm)) rgba(0,0,0,.38))}
+
+/* поп-ап: блоки «встают» со страницы, когда её открыли (вьюер вешает .opening на host) */
+.pg .blk[data-pop]{transform-origin:50% 100%}
+@keyframes magpop{from{rotate:x 88deg;opacity:.15}to{rotate:x 0deg;opacity:1}}
+:host(.opening) .pg{perspective:1100px}
+:host(.opening) .blk[data-pop]{animation:magpop .95s cubic-bezier(.2,1.35,.4,1) both;animation-delay:calc(var(--z) * 45ms)}
+.opening .pg{perspective:1100px}
+.opening .blk[data-pop]{animation:magpop .95s cubic-bezier(.2,1.35,.4,1) both;animation-delay:calc(var(--z) * 45ms)}
+
+/* ---------- текст ---------- */
+.pg .t-body .ct{display:block}
+.pg .t-body .tx{height:100%;white-space:normal;column-count:var(--cols, 1);column-gap:calc(var(--gap, 6) * var(--mm));column-fill:balance;overflow:hidden}
+.pg .t-body .tx p{white-space:pre-wrap}
+.pg .t-body .tx:not(.ind) p+p{margin-top:.55em}
+.pg .t-body .tx.ind p+p{text-indent:1.4em}
+.pg .t-body .tx.dc>p:first-child::first-letter{float:left;font-size:3.35em;line-height:.8;padding:.07em .08em 0 0;color:var(--dc);font-weight:700;font-style:normal}
+.pg .t-quote .tx::before{content:"«";display:block;font-size:2.4em;line-height:.8;height:.5em;margin-bottom:.1em;color:var(--dc)}
+.pg .t-quote .tx.nomark::before{display:none}
+.pg .t-coverline .tx::first-line{color:var(--dc);font-size:1.45em;font-weight:800}
+
+/* изогнутый текст (SVG): размеры уже в мм, эффекты пересчитываются от кегля строки */
+.pg .ct:has(> .tx.bent){overflow:visible}
+.pg .tx.bent{position:absolute;inset:calc(var(--pad, 0) * var(--mm));white-space:normal}
+.pg .bend{display:block;width:100%;height:100%;overflow:visible}
+.pg .bend text{fill:currentColor;text-shadow:var(--tsh, none);-webkit-text-stroke:var(--tst, 0 transparent);paint-order:stroke fill}
+
+/* фольгированный текст и голографическая заливка букв */
+.pg .blk[data-tfx="foil"] .tx:not(.bent),.pg .blk[data-holot] .tx:not(.bent){
+  background-image:var(--tfill, var(--holo-img));background-size:220% 220%;
+  background-position:calc(var(--mx, .3) * 100%) calc(var(--my, .3) * 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  filter:var(--tdrop, none)}
+.pg .blk[data-tfx="foil"] .tx:not(.bent){background-image:var(--tfill)}
+.pg .blk[data-tfx="neon"] .tx{color:color-mix(in srgb, var(--c) 35%, #fff)}
+
+/* ---------- голограммы и фольга на объектах ---------- */
+.pg .blk[data-holo="silver"],.pg .blk[data-holot="silver"]{--holo-img:linear-gradient(115deg,#6e7479 0%,#f4f6f8 18%,#9aa1a7 32%,#fff 48%,#8b9298 62%,#eef1f3 80%,#70767b 100%);--holo-mode:hard-light}
+.pg .blk[data-holo="gold"],.pg .blk[data-holot="gold"]{--holo-img:linear-gradient(115deg,#7a5a12 0%,#f7e7a1 18%,#b8892b 32%,#fff3c4 48%,#9c7420 62%,#f2d98b 80%,#6d4f10 100%);--holo-mode:hard-light}
+.pg .blk[data-holo="holo"],.pg .blk[data-holot="holo"]{--holo-img:repeating-linear-gradient(60deg,rgba(255,255,255,.35) 0 2px,transparent 2px 7px),linear-gradient(120deg,#ff5ec4,#ffd35e,#5effa3,#5ec8ff,#b45eff,#ff5ec4);--holo-mode:color-dodge}
+.pg .blk[data-holo="chameleon"],.pg .blk[data-holot="chameleon"]{--holo-img:linear-gradient(calc(var(--mx, .3) * 220deg + 70deg),#0d47ff,#7b1fff 35%,#00c9a7 65%,#0d47ff);--holo-mode:color}
+.pg .blk[data-holo="glitter"],.pg .blk[data-holot="glitter"]{--holo-img:linear-gradient(115deg,#c9ced3,#fff 40%,#b9bfc5 60%,#fff);--holo-mode:screen}
+.pg .blk[data-holo] .ct::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background-image:var(--holo-img);background-size:220% 220%;
+  background-position:calc(var(--mx, .3) * 100%) calc(var(--my, .3) * 100%);
+  mix-blend-mode:var(--holo-mode, overlay);opacity:var(--holoA, .6)}
+.pg .blk[data-holo="glitter"] .ct::before{
+  background-image:radial-gradient(circle at 30% 40%,#fff 0 .8px,transparent 1.4px),radial-gradient(circle at 70% 20%,#ffe9a8 0 .6px,transparent 1.2px),radial-gradient(circle at 50% 80%,#b8f1ff 0 .7px,transparent 1.3px);
+  background-size:7px 7px,9px 9px,11px 11px;
+  background-position:calc(var(--mx, .3) * 21px) calc(var(--my, .3) * 14px),calc(var(--mx, .3) * -18px) 2px,1px calc(var(--my, .3) * 22px)}
+
+/* ---------- фонарик: блок видно только в круге света от указателя ---------- */
+.pg .blk[data-rv]{
+  --rvmask:radial-gradient(circle calc(var(--revr) * var(--mm) * var(--rvon, 0)) at calc(var(--mx, -1) * 100cqw - var(--x) * var(--mm)) calc(var(--my, -1) * 100cqh - var(--y) * var(--mm)),#000 40%,transparent 100%);
+  -webkit-mask-image:var(--rvmask);mask-image:var(--rvmask)}
+
+/* ---------- наклейка: уголок отгибается, по клику улетает ---------- */
+.pg .blk[data-peel]{--pe:9;transition:--pe .25s}
+.pg .blk[data-peel] .ct{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--pe) * 1%),calc(100% - var(--pe) * 1%) 100%,0 100%)}
+.pg .blk[data-peel]::after{content:"";position:absolute;right:0;bottom:0;width:calc(var(--pe) * 1%);height:calc(var(--pe) * 1%);pointer-events:none;
+  background:linear-gradient(to top left,transparent 50%,rgba(0,0,0,.28) 50%,#f2f2f2 55%,#fff 72%,#d4d4d4 100%);
+  filter:drop-shadow(-1px -1px 2px rgba(0,0,0,.25));transition:width .25s,height .25s}
+.pg .blk[data-peel]:hover{--pe:24;cursor:grab}
+.pg .blk[data-peel].gone{animation:magpeel .75s cubic-bezier(.5,0,.8,.4) forwards;pointer-events:none}
+.pg .blk[data-peel].gone-now{display:none}
+@keyframes magpeel{to{translate:30% -60%;rotate:-28deg;scale:.7;opacity:0}}
+
+/* ---------- картинка ---------- */
+.pg .t-image img{display:block;width:100%;height:100%;object-fit:var(--fit, cover);
+  object-position:calc(var(--fx, 50) * 1%) calc(var(--fy, 50) * 1%);
+  transform:scale(var(--zm, 1));transform-origin:calc(var(--fx, 50) * 1%) calc(var(--fy, 50) * 1%);
+  filter:grayscale(var(--gr, 0)) contrast(var(--con, 1));user-select:none;-webkit-user-drag:none}
+.pg .t-image .tint{position:absolute;inset:0;pointer-events:none;background:var(--tint);opacity:var(--tA);mix-blend-mode:var(--tm)}
+.pg .ph{position:absolute;inset:0;display:grid;place-items:center;color:#8a8a8a;
+  font:500 calc(8 * .3528 * var(--mm)) / 1.3 "IBM Plex Mono", monospace;
+  background:repeating-linear-gradient(45deg,#ecebe6 0 calc(2 * var(--mm)),#f5f4f0 calc(2 * var(--mm)) calc(4 * var(--mm)))}
+
+/* ---------- штрихкод ---------- */
+.pg .t-barcode .ct{background:var(--bg, #fff);color:var(--c, #111)}
+.pg .t-barcode svg{display:block;flex:1;min-height:0;width:100%;fill:currentColor}
+.pg .t-barcode .bcn{font:500 calc(min(var(--h) * .16, var(--w) * .085) * var(--mm)) / 1.25 "IBM Plex Mono", monospace;text-align:center;letter-spacing:.12em;white-space:nowrap}
+
+/* ---------- игра: фасад (обложка + кнопка) ---------- */
+.pg .t-game .ct{align-items:center;justify-content:center;background:var(--bg, #0b0210);color:#fff}
+.pg .t-game .gm-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:var(--fit, cover);user-select:none;-webkit-user-drag:none}
+.pg .t-game .ct::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(0,0,0,.05) 40%, rgba(0,0,0,.62))}
+.pg .gm-play{position:relative;z-index:1;display:inline-flex;align-items:center;gap:.55em;border:0;border-radius:999px;cursor:pointer;
+  padding:.62em 1.25em .62em 1em;background:var(--gac, #c32178);color:#fff;white-space:nowrap;
+  font:700 clamp(calc(3 * var(--mm)), calc(min(var(--w), var(--h)) * .065 * var(--mm)), calc(6.5 * var(--mm))) / 1 Onest, system-ui, sans-serif;
+  box-shadow:0 .35em 1.1em rgba(0,0,0,.4);transition:transform .15s, filter .15s}
+.pg .gm-play:hover{filter:brightness(1.12);transform:scale(1.04)}
+.pg .gm-play i{width:0;height:0;border-left:.78em solid currentColor;border-top:.48em solid transparent;border-bottom:.48em solid transparent}
+.pg .gm-name{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:calc(3 * var(--mm)) calc(4 * var(--mm));text-align:left;
+  font:600 clamp(calc(2.6 * var(--mm)), calc(min(var(--w), var(--h)) * .045 * var(--mm)), calc(5 * var(--mm))) / 1.2 Onest, system-ui, sans-serif;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pg .gm-empty{position:relative;z-index:1;font:500 calc(3 * var(--mm)) / 1.3 "IBM Plex Mono", monospace;opacity:.6}
+.pg .t-game.is-playing .gm-play,.pg .t-game.is-playing .gm-name{visibility:hidden}
+
+/* ---------- колонтитул ---------- */
+.pg .folio{--mm:calc(100cqw / 210);position:absolute;bottom:calc(8 * var(--mm));z-index:99990;display:flex;gap:1.2em;white-space:nowrap;
+  font:500 calc(6.2 * .3528 * var(--mm)) / 1 "IBM Plex Mono", monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--folio, #1a1a1a);pointer-events:none}
+.pg .folio.L{left:calc(15 * var(--mm))}
+.pg .folio.R{right:calc(15 * var(--mm))}
+
+/* ---------- бумага ----------
+   ::before (multiply): оттенок бумаги + волокно + тень корешка у твёрдого листа
+   ::after  (screen/dodge): лак, блик, голограмма. Позиция блика — --gx */
+.pg::before,.pg::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:99991}
+.pg::before{background-image:var(--hinge, none), var(--grain, none), linear-gradient(var(--ptint, #fff), var(--ptint, #fff));
+  background-size:100% 100%, calc(40 * 100cqh / 297) calc(40 * 100cqh / 297), 100% 100%;mix-blend-mode:multiply}
+.pg{--grain-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .38 0 0 0 0 .33 .1 0 0 0 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .38 0 0 0 0 .33 .22 0 0 0 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-h:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55 .9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .33 0 0 0 0 .28 .42 0 0 0 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+.pg[data-material="offset"]{--ptint:#f7f2e6;--grain:var(--grain-m)}
+.pg[data-material="white"]{--grain:var(--grain-l)}
+.pg[data-material="matte"]{--ptint:#fbfaf7;--grain:var(--grain-l)}
+.pg[data-material="news"]{--ptint:#e6e0cf;--grain:var(--grain-h);--newsf:saturate(.72) contrast(.9)}
+.pg[data-material="foil"]{--ptint:#e9ecef}
+.pg[data-density="hard"][data-side="R"]{--hinge:linear-gradient(90deg, rgba(0,0,0,.32) 0, rgba(0,0,0,.1) 1.4%, rgba(255,255,255,.14) 2.2%, rgba(0,0,0,.06) 3.2%, transparent 6%, transparent 99.2%, rgba(0,0,0,.22) 100%)}
+.pg[data-density="hard"][data-side="L"]{--hinge:linear-gradient(270deg, rgba(0,0,0,.32) 0, rgba(0,0,0,.1) 1.4%, rgba(255,255,255,.14) 2.2%, rgba(0,0,0,.06) 3.2%, transparent 6%, transparent 99.2%, rgba(0,0,0,.22) 100%)}
+/* газета: растровые точки поверх фотографий */
+.pg[data-material="news"] .t-image .ct::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.35;
+  background:radial-gradient(circle,rgba(0,0,0,.55) 30%,transparent 32%) 0 0/calc(1.1 * 100cqh / 297) calc(1.1 * 100cqh / 297)}
+
+.pg[data-material="gloss"]::after,.pg[data-material="white"]::after{mix-blend-mode:screen;opacity:var(--gloss, .6);
+  background:
+    linear-gradient(var(--ga, 112deg),
+      transparent calc(var(--gx, 28%) - 26%),
+      rgba(255,255,255,.16) calc(var(--gx, 28%) - 8%),
+      rgba(255,255,255,.5) var(--gx, 28%),
+      rgba(255,255,255,.14) calc(var(--gx, 28%) + 7%),
+      transparent calc(var(--gx, 28%) + 26%)),
+    linear-gradient(180deg, rgba(255,255,255,.12), transparent 30%, transparent 75%, rgba(0,0,0,.07))}
+.pg[data-material="white"]::after{opacity:.22}
+.pg[data-material="matte"]::after{background:rgba(255,255,255,.05);mix-blend-mode:screen}
+.pg[data-material="holo"]::after{mix-blend-mode:color-dodge;opacity:.42;
+  background:repeating-linear-gradient(60deg,rgba(255,255,255,.25) 0 1px,transparent 1px 5px),
+    linear-gradient(calc(var(--gx, 28%) * 1.2deg + 100deg),#ff5ec4,#ffd35e 20%,#5effa3 40%,#5ec8ff 60%,#b45eff 80%,#ff5ec4)}
+.pg[data-material="foil"]::after{mix-blend-mode:hard-light;opacity:.5;
+  background:linear-gradient(112deg,#6e7479 calc(var(--gx, 28%) - 40%),#fff var(--gx, 28%),#8b9298 calc(var(--gx, 28%) + 30%),#eef1f3 calc(var(--gx, 28%) + 60%))}
+
+</style>
+<style data-doc>
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #fff; }
+.pg { width: min(100%, calc(100vh * 210 / 297)); margin: 0 auto; }
+</style>
+</head>
+<body>
+<div class="pg kind-back" data-density="hard" data-stiff="hard" data-material="gloss" data-side="L" style="--pg-bg:#16141c;--folio:#1a1a1a"><div class="blk t-image" style="--x:15;--y:15;--w:180;--h:150;--r:0;--z:1;--op:1;--bl:normal;--rad:3;--pad:0;--fit:cover;--fx:50;--fy:50;--zm:1;--gr:0;--con:1;"><div class="ct"><img src="http://127.0.0.1/newmagazine/studio/assets/demo/ember.png" alt="" decoding="async" draggable="false"></div></div><div class="blk t-rubric" style="--x:15;--y:178;--w:60;--h:7;--r:0;--z:2;--op:1;--bl:normal;--rad:0;--pad:1.6;--bg:#e8662a;--ff:&#039;IBM Plex Mono&#039;, monospace;--fs:7;--fw:500;--fst:normal;--tt:uppercase;--ta:center;--lh:1;--ls:0.14;--c:#16141c;--va:center;"><div class="ct"><div class="tx">В следующем номере</div></div></div><div class="blk t-heading" style="--x:15;--y:190;--w:180;--h:44;--r:0;--z:3;--op:1;--bl:normal;--rad:0;--pad:0;--ff:&#039;Unbounded&#039;, sans-serif;--fs:26;--fw:700;--fst:normal;--tt:none;--ta:left;--lh:1.05;--ls:-0.01;--c:#ffffff;--va:flex-start;"><div class="ct"><div class="tx">Угли: как делают игры, в которых ничего не объясняют</div></div></div><div class="blk t-caption" style="--x:15;--y:240;--w:120;--h:14;--r:0;--z:4;--op:1;--bl:normal;--rad:0;--pad:0;--ff:&#039;IBM Plex Mono&#039;, monospace;--fs:6.5;--fw:400;--fst:normal;--tt:none;--ta:left;--lh:1.4;--ls:0;--c:#9a92a8;--va:flex-start;"><div class="ct"><div class="tx">Dustore · журнал об инди-играх
+dustore.ru</div></div></div><div class="blk t-barcode" style="--x:160;--y:262;--w:36;--h:22;--r:0;--z:5;--op:1;--bl:normal;--rad:0;--pad:1.5;--bg:#ffffff;--c:#111111;"><div class="ct"><svg viewBox="0 0 95 1" preserveAspectRatio="none" aria-hidden="true"><rect x="0" width="1" height="1"/><rect x="2" width="1" height="1"/><rect x="4" width="1" height="1"/><rect x="6" width="4" height="1"/><rect x="11" width="1" height="1"/><rect x="14" width="3" height="1"/><rect x="18" width="3" height="1"/><rect x="22" width="2" height="1"/><rect x="27" width="2" height="1"/><rect x="30" width="1" height="1"/><rect x="32" width="1" height="1"/><rect x="35" width="3" height="1"/><rect x="39" width="2" height="1"/><rect x="43" width="2" height="1"/><rect x="46" width="1" height="1"/><rect x="48" width="1" height="1"/><rect x="50" width="2" height="1"/><rect x="53" width="2" height="1"/><rect x="57" width="1" height="1"/><rect x="62" width="1" height="1"/><rect x="64" width="1" height="1"/><rect x="66" width="3" height="1"/><rect x="71" width="1" height="1"/><rect x="74" width="3" height="1"/><rect x="78" width="1" height="1"/><rect x="80" width="1" height="1"/><rect x="85" width="2" height="1"/><rect x="88" width="2" height="1"/><rect x="92" width="1" height="1"/><rect x="94" width="1" height="1"/></svg><div class="bcn">4 607001 234562</div></div></div></div>
+<script src="http://127.0.0.1/newmagazine/studio/assets/render.js"></script>
+<script>addEventListener('load',()=>MagRender.applyQuads(document));addEventListener('resize',()=>MagRender.applyQuads(document));</script>
+</body>
+</html>

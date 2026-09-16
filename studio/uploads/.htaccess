@@ -1,0 +1,8 @@
+# фото пользователей: только картинки, никакого PHP
+<FilesMatch "\.(php\d?|phtml|phar|phps|pht|cgi|pl|py|sh)$">
+    Require all denied
+</FilesMatch>
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+Options -Indexes

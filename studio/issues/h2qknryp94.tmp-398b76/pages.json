@@ -1,0 +1,74 @@
+{
+    "title": "ИГРОЛОМ СЕНТЯБРЬ'26",
+    "slug": "h2qknryp94",
+    "updated": "2026-09-16T03:12:51+03:00",
+    "format": {
+        "mm": [
+            210,
+            297
+        ],
+        "px": [
+            595,
+            842
+        ]
+    },
+    "viewer": "http://127.0.0.1/newmagazine/studio/viewer.php?i=h2qknryp94",
+    "pages": [
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page0.html",
+            "file": "page0.html",
+            "kind": "cover",
+            "density": "hard",
+            "finish": "gloss"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page1.html",
+            "file": "page1.html",
+            "kind": "page",
+            "density": "hard",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page2.html",
+            "file": "page2.html",
+            "kind": "cover",
+            "density": "hard",
+            "finish": "gloss"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page3.html",
+            "file": "page3.html",
+            "kind": "page",
+            "density": "hard",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page4.html",
+            "file": "page4.html",
+            "kind": "page",
+            "density": "soft",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page5.html",
+            "file": "page5.html",
+            "kind": "page",
+            "density": "soft",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page6.html",
+            "file": "page6.html",
+            "kind": "page",
+            "density": "hard",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page7.html",
+            "file": "page7.html",
+            "kind": "back",
+            "density": "hard",
+            "finish": "gloss"
+        }
+    ]
+}

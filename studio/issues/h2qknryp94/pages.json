@@ -1,0 +1,92 @@
+{
+    "title": "ИГРОЛОМ СЕНТЯБРЬ'26",
+    "games": [],
+    "fonts": [],
+    "slug": "h2qknryp94",
+    "updated": "2026-09-16T21:30:23+03:00",
+    "format": {
+        "mm": [
+            210,
+            297
+        ],
+        "px": [
+            595,
+            842
+        ]
+    },
+    "viewer": "http://127.0.0.1/newmagazine/studio/viewer.php?i=h2qknryp94",
+    "pages": [
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page0.html",
+            "file": "page0.html",
+            "kind": "cover",
+            "density": "soft",
+            "stiff": "thin",
+            "material": "gloss",
+            "finish": "gloss"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page1.html",
+            "file": "page1.html",
+            "kind": "page",
+            "density": "soft",
+            "stiff": "thin",
+            "material": "offset",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page2.html",
+            "file": "page2.html",
+            "kind": "page",
+            "density": "soft",
+            "stiff": "soft",
+            "material": "offset",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page3.html",
+            "file": "page3.html",
+            "kind": "page",
+            "density": "soft",
+            "stiff": "soft",
+            "material": "offset",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page4.html",
+            "file": "page4.html",
+            "kind": "page",
+            "density": "soft",
+            "stiff": "soft",
+            "material": "offset",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page5.html",
+            "file": "page5.html",
+            "kind": "page",
+            "density": "soft",
+            "stiff": "soft",
+            "material": "offset",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page6.html",
+            "file": "page6.html",
+            "kind": "page",
+            "density": "hard",
+            "stiff": "hard",
+            "material": "offset",
+            "finish": "matte"
+        },
+        {
+            "url": "http://127.0.0.1/newmagazine/studio/issues/h2qknryp94/page7.html",
+            "file": "page7.html",
+            "kind": "back",
+            "density": "hard",
+            "stiff": "hard",
+            "material": "gloss",
+            "finish": "gloss"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+# экспортированные выпуски: статический HTML + pages.json
+<FilesMatch "\.(php\d?|phtml|phar|phps|pht)$">
+    Require all denied
+</FilesMatch>
+Options -Indexes
+<IfModule mod_headers.c>
+    # чтобы React-вьюер (npm start на :3000) мог читать pages.json и страницы
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>

@@ -6,29 +6,6 @@ import "./App.css";
 const PAGE_URLS = ["page0.html", "page1.php", "page2.html", "page5.html", "page6.html", "page7.html"];
 const CUSTOM_CURSOR = false;
 
-// Выпуск из PHP-студии: ?issue=<slug> → список страниц берётся из studio/issues/<slug>/pages.json
-const STUDIO_URL = process.env.REACT_APP_STUDIO_URL || "/newmagazine/studio";
-const ISSUE = new URLSearchParams(window.location.search).get("issue");
-
-// page-flip 2.0.7 сам портит жёсткость: при showCover делает твёрдыми первую/последнюю полосу,
-// а после перелистывания листа со «смешанными» сторонами оставляет обе hard навсегда.
-// Возвращаем плотность из data-density после загрузки и после каждого перелистывания.
-function syncDensity(pf) {
-  pf?.getPageCollection()?.getPages().forEach((p) => {
-    const d = p.getElement().dataset.density === "hard" ? "hard" : "soft";
-    if (p.getDensity() !== d) p.setDensity(d);
-    if (p.getDrawingDensity() !== d || !p.getElement().classList.contains("--" + d)) p.setDrawingDensity(d);
-  });
-}
-
-async function getPageUrls() {
-  if (!ISSUE) return PAGE_URLS.map((url) => ({ url, density: "soft" }));
-  const res = await fetch(`${STUDIO_URL}/issues/${encodeURIComponent(ISSUE)}/pages.json`);
-  if (!res.ok) throw new Error("pages.json не найден — выпуск не опубликован?");
-  const manifest = await res.json();
-  return manifest.pages.map((p) => ({ url: p.url, density: p.density === "hard" ? "hard" : "soft" }));
-}
-
 // Рендерит HTML страницы в Shadow DOM: её <style> (*, body, html …)
 // больше не протекают в приложение и в соседние страницы.
 function ShadowHtml({ html }) {
@@ -36,19 +13,8 @@ function ShadowHtml({ html }) {
 
   React.useLayoutEffect(() => {
     const host = hostRef.current;
-    const root = host.shadowRoot || host.attachShadow({ mode: "open", clonable: true });
+    const root = host.shadowRoot || host.attachShadow({ mode: "open" });
     const doc = new DOMParser().parseFromString(html, "text/html");
-
-    // @font-face внутри Shadow DOM не работает — шрифты страницы подключаем в документ (без дублей)
-    doc.querySelectorAll('link[rel="stylesheet"]').forEach((l) => {
-      const href = l.getAttribute("href");
-      if (href && ![...document.head.querySelectorAll('link[rel="stylesheet"]')].some((x) => x.getAttribute("href") === href)) {
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = href;
-        document.head.appendChild(link);
-      }
-    });
 
     const css = [...doc.querySelectorAll("style")]
       .map((s) => s.textContent)
@@ -66,7 +32,7 @@ function ShadowHtml({ html }) {
 }
 
 const PageCover = React.forwardRef((props, ref) => (
-  <div className="page page-cover" ref={ref} data-density="hard">
+  <div className="page page-cover" ref={ref} data-density="soft">
     <div className="page-content">
       <h2>{props.children}</h2>
     </div>
@@ -74,21 +40,20 @@ const PageCover = React.forwardRef((props, ref) => (
 ));
 
 const Page = React.forwardRef((props, ref) => (
-  <div className="page" ref={ref} data-density={props.density || "soft"}>
+  <div className="page" ref={ref}>
     <div className="page-content">{props.children}</div>
   </div>
 ));
 
 async function loadPage(url) {
-  const full = /^(https?:)?\/\//.test(url) || url.startsWith("/") ? url : `${process.env.PUBLIC_URL}/${url}`;
-  const res = await fetch(full);
+  const res = await fetch(`${process.env.PUBLIC_URL}/${url}`);
   const html = res.ok ? await res.text() : "";
   // dev-сервер CRA на несуществующий файл отдаёт index.html самого приложения
   return html.includes('id="root"') ? "" : html;
 }
 
 class DemoBook extends React.Component {
-  state = { pages: null, urls: [], error: null };
+  state = { pages: null, error: null };
   flipBook = React.createRef();
   cursor = null;
 
@@ -113,9 +78,8 @@ class DemoBook extends React.Component {
     this.alive = true;
     window.addEventListener("keydown", this.handleKeyDown);
 
-    getPageUrls()
-      .then((urls) => Promise.all(urls.map((u) => loadPage(u.url))).then((pages) => ({ urls, pages })))
-      .then(({ urls, pages }) => this.alive && this.setState({ pages, urls }))
+    Promise.all(PAGE_URLS.map(loadPage))
+      .then((pages) => this.alive && this.setState({ pages }))
       .catch((error) => {
         console.error("Ошибка загрузки страниц:", error);
         if (this.alive) this.setState({ error });
@@ -144,7 +108,7 @@ class DemoBook extends React.Component {
   }
 
   render() {
-    const { pages, urls, error } = this.state;
+    const { pages, error } = this.state;
 
     if (error) return <p className="loading">Не удалось загрузить журнал</p>;
     if (!pages) return <p className="loading">Загрузка страниц</p>;
@@ -159,25 +123,21 @@ class DemoBook extends React.Component {
           maxWidth={595}
           minHeight={396}
           maxHeight={842}
-          showCover={!!ISSUE}
+          showCover={false}
           maxShadowOpacity={1}
           flippingTime={700}
           mobileScrollSupport={false}
           ref={this.flipBook}
-          onInit={(e) => syncDensity(e.object)}
-          onChangeState={(e) => e.data === "read" && syncDensity(e.object)}
-          onChangeOrientation={(e) => syncDensity(e.object)}
-          onUpdate={(e) => syncDensity(e.object)}
         >
-          {!ISSUE && <PageCover />}
+          <PageCover />
 
           {pages.map((html, i) => (
-            <Page key={urls[i].url} density={urls[i].density}>
+            <Page key={PAGE_URLS[i]}>
               <ShadowHtml html={html} />
             </Page>
           ))}
 
-          {!ISSUE && <PageCover>THE END</PageCover>}
+          <PageCover>THE END</PageCover>
         </HTMLFlipBook>
       </div>
     );

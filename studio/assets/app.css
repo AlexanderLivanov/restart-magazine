@@ -1,0 +1,76 @@
+/* newmagazine/studio/assets/app.css — интерфейс студии (полка, редактор). Полосы — в page.css. */
+:root{
+  --chrome:#E9EAEF; --panel:#F8F8FB; --ink:#16141C; --muted:#655F72; --line:#D8D6E0; --field:#FFFFFF;
+  --hover:#EEEDF3; --accent:#C32178; --accent-ink:#FFFFFF; --desk:#CFCDD8; --guide:#0098CC; --danger:#C8352A;
+  --shadow:0 1px 2px rgba(22,16,34,.08),0 12px 40px rgba(22,16,34,.2);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --chrome:#120E18; --panel:#19141F; --ink:#ECE8F2; --muted:#9A92A8; --line:#2C2536; --field:#211A29;
+    --hover:#261F2F; --accent:#E0489A; --accent-ink:#120E18; --desk:#0B0810; --guide:#2BC4F4; --danger:#FF6B5E;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 50px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --chrome:#120E18; --panel:#19141F; --ink:#ECE8F2; --muted:#9A92A8; --line:#2C2536; --field:#211A29;
+  --hover:#261F2F; --accent:#E0489A; --accent-ink:#120E18; --desk:#0B0810; --guide:#2BC4F4; --danger:#FF6B5E;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 50px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{height:100%}
+body{margin:0;min-height:100%;background:var(--chrome);color:var(--ink);font:13px/1.45 Onest,system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+
+.bar{display:flex;align-items:center;gap:6px;height:48px;padding:0 16px;background:var(--panel);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:-.01em;margin-right:12px;white-space:nowrap;text-decoration:none}
+.brand small{font-weight:400;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:11px}
+.cmyk{display:grid;grid-template-columns:repeat(2,7px);gap:2px}
+.cmyk i{width:7px;height:7px;border-radius:50%}
+.cmyk i:nth-child(1){background:#00AEEF}.cmyk i:nth-child(2){background:#EC008C}.cmyk i:nth-child(3){background:#FFE600}.cmyk i:nth-child(4){background:#231F20;box-shadow:0 0 0 1px rgba(255,255,255,.3)}
+.grow{flex:1}
+.who{color:var(--muted);font-size:12px}
+
+.btn{height:32px;padding:0 12px;border:1px solid var(--line);border-radius:7px;background:var(--field);display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.sm{height:28px;padding:0 10px;font-size:12px}
+.btn.ghost{background:transparent;border-color:transparent}
+.btn.danger:hover{color:var(--danger);border-color:var(--danger)}
+.btn:disabled{opacity:.4;cursor:default}
+
+/* ---------- полка ---------- */
+.shelf{max-width:1180px;margin:0 auto;padding:28px 16px 64px;display:grid;gap:36px}
+.flash{padding:10px 14px;border-radius:8px;background:var(--field);border:1px solid var(--line)}
+.create{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:32px;align-items:end;padding:28px;border-radius:12px;background:var(--panel);border:1px solid var(--line)}
+.create h1{margin:0 0 8px;font:700 clamp(26px,4vw,40px)/1.05 "Unbounded",Onest,sans-serif;letter-spacing:-.03em;text-wrap:balance}
+.create p{margin:0;color:var(--muted);max-width:52ch;font-size:14px}
+.create-form{display:grid;gap:10px}
+.fld{display:grid;gap:4px}
+.fld span{font-size:12px;color:var(--muted)}
+.fld input{height:38px;border:1px solid var(--line);border-radius:7px;background:var(--field);padding:0 10px}
+.chk{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted)}
+.chk input{accent-color:var(--accent)}
+.shelf h2{margin:0 0 14px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.shelf h2 span{font-family:"IBM Plex Mono",monospace;margin-left:6px}
+.empty{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:22px 18px}
+.card{display:grid;gap:10px;align-content:start}
+.cover{display:block;border-radius:2px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s}
+.cover:hover{transform:translateY(-3px)}
+.cover .pg{pointer-events:none}
+.meta .t{font-weight:600;font-size:14px;line-height:1.3}
+.meta .s{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:12px;margin-top:3px}
+.pill{font-size:10.5px;padding:2px 7px;border-radius:99px;border:1px solid var(--line)}
+.pill.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.acts{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.acts form{margin:0}
+@media (max-width:760px){.create{grid-template-columns:1fr;padding:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
